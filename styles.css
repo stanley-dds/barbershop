@@ -1,0 +1,426 @@
+/* Основные стили и слайдер */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #fff;
+}
+
+header {
+    background: #000;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Фиксированная шапка */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #000;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Для подчеркивания активной ссылки в sticky header */
+.sticky-header a.active {
+    border-bottom: 2px solid #f4a261; /* Добавляем подчеркивание */
+    color: #f4a261; /* Цвет текста активной ссылки */
+}
+
+/* Миниатюрное изображение Instagram */
+.instagram-icon {
+    width: 24px; /* Размер изображения */
+    height: 24px; /* Пропорциональная высота */
+    object-fit: contain; /* Сохраняем пропорции */
+    border-radius: 50%; /* Делаем изображение кругом, если это нужно */
+    transition: transform 0.3s ease; /* Эффект при наведении */
+}
+
+.instagram-icon:hover {
+    transform: scale(1.2); /* Увеличиваем изображение при наведении */
+}
+
+
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navbar nav {
+    display: flex;
+    justify-content: space-evenly;
+    flex-grow: 1;
+}
+
+.navbar nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Стиль для активной ссылки в sticky-header */
+.navbar nav a.active {
+    position: relative;
+    color: #fff;
+}
+
+.navbar nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #fff;
+    animation: underline-slide 0.3s ease-in-out;
+}
+
+@keyframes underline-slide {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.instagram-icon {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: auto; /* Расположение в правом углу */
+}
+
+
+
+/*НАЧАЛЬНЫЙ ГЛАВНЫЙ СЛАЙДЕР*/
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 80vh; /* Фиксируем высоту слайдера */
+    display: flex;
+    overflow: hidden; /* Скрываем лишнее */
+    justify-content: center;
+    align-items: center;
+    background-color: #111; /* Фон для визуального эффекта */
+}
+
+.slider {
+    display: flex;
+    /*justify-content: space-between;*/
+    width: 100%;
+    height: 100%;
+}
+
+.slider img {
+    width: 25%; /* Каждое изображение занимает ровно 1/4 ширины */
+    height: 100%; /* Изображения растягиваются на всю высоту слайдера */
+    object-fit: cover; /* Сохраняем пропорции, обрезая лишнее */
+    opacity: 0.4; /* Затеняем неактивные изображения */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Плавный переход состояния */
+}
+
+.slider img.active {
+    opacity: 1; /* Полностью видно активное изображение */
+    transform: scale(1.05); /* Увеличиваем активное изображение на 5% */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Добавляем тень */
+}
+
+
+
+/*УСЛУГИ*/
+
+
+
+.services-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.services-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.services-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: calc(100% + 20px); /* Учитываем отступы карточек */
+}
+
+.service-card {
+    flex: 0 0 calc(100% / 3 - 20px); /* Делим ширину контейнера на 3 карточки с отступами */
+    margin: 0 10px; /* Отступы между карточками */
+    text-align: center;
+    background: #222;
+    border-radius: 10px;
+}
+
+.service-card img {
+    width: 100%; /* Устанавливаем одинаковую ширину для всех изображений */
+    height: auto; /* Сохраняем пропорции */
+    max-height: 200px; /* Задаем максимальную высоту для единообразия */
+    object-fit: cover; /* Гарантируем, что изображение заполнит заданные размеры */
+    transition: transform 0.3s ease; /* Добавляем плавную анимацию */
+}
+
+.service-card img:hover {
+    transform: scale(1.05); /* Увеличиваем изображение на 5% при наведении */
+}
+
+
+
+.slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.arrow {
+    background: #444;
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.arrow:hover {
+    background: #666;
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: #888;
+    border-radius: 50%;
+}
+
+.dot.active {
+    background: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*ТЕКСТ ЗЕ БАРБЕРШОП И КНОПКИ "ЗАПИСАТИСЬ" "ПОДЗВОНИТИ" 
+ПОСРЕДИНЕ ИЗОБРАЖЕНИЙ*/
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    width: 100%;
+}
+
+.text-overlay h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 5px;
+    line-height: 1.2;
+}
+
+.text-overlay .buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.text-overlay .buttons a button {
+    padding: 15px 30px;
+    font-size: 16px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.text-overlay .buttons a button:hover {
+    background: #fff;
+    color: #000;
+}
+
+
+
+
+
+
+
+
+/* Раздел "Про нас" */
+.about-section {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #222;
+    color: #fff;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.about-text {
+    flex: 1;
+    max-width: 50%;
+    text-align: left;
+    font-size: 18px;
+}
+
+.about-images {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+}
+
+
+.about-images img {
+    width: 600px; /* Устанавливаем ширину */
+    height: 350px; /* Устанавливаем высоту */
+    object-fit: cover; /* Сохраняем пропорции, обрезая лишнее */
+    border-radius: 10px; /* Добавляем скругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляем тень для красоты */
+    display: block; /* Убираем отступы между изображением и контейнером */
+    margin: 0 auto; /* Центрируем изображение внутри блока */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавный переход для увеличения и тени */
+}
+
+
+.about-images img:hover {
+    transform: scale(1.05); /* Увеличиваем изображение на 5% */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Увеличиваем тень при наведении */
+}
+
+
+
+
+
+
+
+
+/* Галерея робіт */
+.gallery-section {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #111;
+}
+
+.gallery-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.gallery-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform; /* Оптимизация для плавности */
+}
+
+.gallery-card {
+    flex: 0 0 33.33%;
+    padding: 10px;
+    box-sizing: border-box;
+    
+}
+
+.gallery-card img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавное увеличение и тень */
+}
+
+.gallery-card img:hover {
+    transform: scale(1.05); /* Увеличение на 5% */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Более выразительная тень при наведении */
+}
+
+
+
+
+
+
+.contacts-section {
+    padding: 50px 20px;
+    background-color: #111; /* Темный фон */
+    color: #fff; /* Белый текст */
+    font-family: 'Helvetica', 'Arial', sans-serif; /* Непринужденный шрифт */
+    text-align: center;
+}
+
+.contacts-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.contacts-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px; /* Расстояние между текстом и изображением */
+    flex-wrap: wrap; /* Адаптивность */
+}
+
+.contact-text {
+    flex: 0 0 auto; /* Текст занимает необходимое пространство */
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Убираем синий цвет ссылки и делаем её белой */
+.contact-text a {
+    color: #fff; /* Белый цвет для номера телефона */
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+.contact-text a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+.contacts-layout img {
+    flex: 0 0 auto; /* Изображение занимает необходимое пространство */
+    width: 100px; /* Миниатюрное изображение */
+    height: auto; /* Сохраняем пропорции */
+    object-fit: contain; /* Корректируем отображение */
+    border-radius: 8px; /* Легкое скругление углов */
+}
