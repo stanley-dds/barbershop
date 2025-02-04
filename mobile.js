@@ -186,3 +186,57 @@ function initServiceCarousel() {
         updateCarousel();
     }
 }
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    initGallery();
+});
+
+/* === Галерея: смена изображений при клике и работа пальца === */
+function initGallery() {
+    const images = ["style1.jpg", "style3.jpg", "style4.jpg", "style5.jpg"]; // Список изображений
+    let currentIndex = 0;
+    const galleryImage = document.getElementById("gallery-image");
+    const pointer = document.getElementById("pointer");
+
+    if (!galleryImage || !pointer) return;
+
+    // Функция смены изображения при клике
+    function changeImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        galleryImage.style.opacity = "0";
+        setTimeout(() => {
+            galleryImage.src = images[currentIndex];
+            galleryImage.style.opacity = "1";
+        }, 300);
+    }
+
+    // Функция случайного появления пальца (несколько раз в одном месте перед сменой)
+    function movePointer() {
+        const randomX = Math.random() * window.innerWidth * 0.5 + "px";
+        const randomY = Math.random() * window.innerHeight * 0.5 + "px";
+
+        pointer.style.left = randomX;
+        pointer.style.top = randomY;
+        pointer.style.opacity = "1";
+
+        // Имитация нескольких нажатий перед сменой позиции
+        setTimeout(() => pointer.classList.add("tap"), 500);
+        setTimeout(() => pointer.classList.remove("tap"), 1000);
+        setTimeout(() => pointer.classList.add("tap"), 1500);
+        setTimeout(() => pointer.classList.remove("tap"), 2000);
+        setTimeout(() => pointer.style.opacity = "0", 3000);
+    }
+
+    // Запускаем анимацию появления пальца каждые 5 секунд
+    setInterval(movePointer, 5000);
+
+    // Смена изображения при нажатии
+    galleryImage.addEventListener("click", changeImage);
+}
+
+

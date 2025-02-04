@@ -386,6 +386,112 @@ body {
     animation: arrowMoveRight 2s infinite;
 }
 
+
+
+
+
+
+
+
+/* Секция "Галерея" */
+.gallery-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Контейнер для изображения */
+.gallery-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Изображение галереи */
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Указательный палец */
+.pointer {
+    position: absolute;
+    width: 50px;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Стили для SVG пальца */
+.pointer img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(2px 2px 5px rgba(255, 255, 255, 0.6));
+}
+
+/* Анимация имитации нажатия */
+.tap {
+    animation: tapEffect 0.5s infinite;
+}
+
+/* Анимация "тапа" (нажатия) */
+@keyframes tapEffect {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+/* Анимация случайного появления пальца */
+@keyframes randomPointer {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(var(--random-x, 50px), var(--random-y, 50px)) scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--random-x, -50px), var(--random-y, -50px)) scale(1);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Кнопка Instagram */
 .instagram-fixed {
     position: fixed;
