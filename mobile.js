@@ -26,12 +26,9 @@ function initNavigation() {
 
     navLinks.forEach(link => {
         link.addEventListener("click", function (e) {
-            e.preventDefault(); // Блокируем стандартное поведение ссылки
-            const targetId = this.getAttribute("href");
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                smoothScrollTo(targetElement);
-            }
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) smoothScrollTo(target);
         });
     });
 
@@ -64,6 +61,62 @@ function smoothScrollTo(target) {
     });
 }
 
+/* === Блокировка частично открытых секций === */
+function initSectionScrollControl() {
+    let isScrolling = false;
+    let touchStartY = 0;
+    let touchEndY = 0;
+    const sections = document.querySelectorAll('.section');
+
+    document.addEventListener("touchstart", (e) => {
+        if (isCarouselActive) return;
+        touchStartY = e.touches[0].clientY;
+    });
+
+    document.addEventListener("touchend", (e) => {
+        if (isCarouselActive) return;
+        touchEndY = e.changedTouches[0].clientY;
+        handleSectionSwipe();
+    });
+
+    window.addEventListener("scroll", () => {
+        if (isScrolling) return;
+        isScrolling = true;
+
+        setTimeout(() => {
+            snapToNearestSection();
+            isScrolling = false;
+        }, 300);
+    });
+
+    function handleSectionSwipe() {
+        if (isScrolling) return;
+        isScrolling = true;
+
+        let currentIndex = findCurrentSection();
+        if (touchEndY < touchStartY - 50) { // Свайп вверх
+            currentIndex = Math.min(currentIndex + 1, sections.length - 1);
+        } else if (touchEndY > touchStartY + 50) { // Свайп вниз
+            currentIndex = Math.max(currentIndex - 1, 0);
+        }
+
+        smoothScrollTo(sections[currentIndex]);
+        setTimeout(() => isScrolling = false, 800);
+    }
+
+    function snapToNearestSection() {
+        let currentIndex = findCurrentSection();
+        smoothScrollTo(sections[currentIndex]);
+    }
+
+    function findCurrentSection() {
+        return [...sections].findIndex(section =>
+            window.scrollY >= section.offsetTop - window.innerHeight / 2 &&
+            window.scrollY < section.offsetTop + section.offsetHeight - window.innerHeight / 2
+        );
+    }
+}
+
 /* === Блокировка вертикального скролла при свайпе карусели === */
 let isCarouselActive = false;
 
@@ -87,9 +140,7 @@ function initServiceCarousel() {
         isAnimating = true;
         const offset = -currentIndex * 100;
         carousel.style.transform = `translateX(${offset}%)`;
-        setTimeout(() => {
-            isAnimating = false;
-        }, 500);
+        setTimeout(() => isAnimating = false, 500);
     }
 
     leftArrow.addEventListener("click", () => {
@@ -108,14 +159,14 @@ function initServiceCarousel() {
     let startX, endX;
 
     carouselContainer.addEventListener("touchstart", (e) => {
-        isCarouselActive = true; // Блокируем вертикальный скролл
+        isCarouselActive = true;
         startX = e.touches[0].clientX;
     });
 
     carouselContainer.addEventListener("touchend", (e) => {
         endX = e.changedTouches[0].clientX;
         handleSwipe();
-        setTimeout(() => isCarouselActive = false, 300); // Разблокируем после свайпа
+        setTimeout(() => isCarouselActive = false, 300);
     });
 
     function handleSwipe() {
@@ -126,41 +177,5 @@ function initServiceCarousel() {
             currentIndex = (currentIndex === 0) ? items.length - 1 : currentIndex - 1;
         }
         updateCarousel();
-    }
-}
-
-/* === Блокировка скроллинга вверх/вниз, пока секция не откроется полностью === */
-function initSectionScrollControl() {
-    let isScrolling = false;
-    let touchStartY = 0;
-    let touchEndY = 0;
-
-    document.addEventListener("touchstart", (e) => {
-        if (isCarouselActive) return; // Если листаем карусель – не обрабатываем секции
-        touchStartY = e.touches[0].clientY;
-    });
-
-    document.addEventListener("touchend", (e) => {
-        if (isCarouselActive) return; // Если карусель активна – игнорируем
-        touchEndY = e.changedTouches[0].clientY;
-        handleSectionSwipe();
-    });
-
-    function handleSectionSwipe() {
-        if (isScrolling) return;
-
-        const sections = document.querySelectorAll('.section');
-        let currentIndex = [...sections].findIndex(section =>
-            window.scrollY >= section.offsetTop - 50 &&
-            window.scrollY < section.offsetTop + section.offsetHeight - 50
-        );
-
-        if (touchEndY < touchStartY - 50) { // Свайп вверх
-            currentIndex = Math.min(currentIndex + 1, sections.length - 1);
-        } else if (touchEndY > touchStartY + 50) { // Свайп вниз
-            currentIndex = Math.max(currentIndex - 1, 0);
-        }
-
-        smoothScrollTo(sections[currentIndex]);
     }
 }
