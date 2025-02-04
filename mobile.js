@@ -61,36 +61,43 @@ function smoothScrollTo(target) {
     });
 }
 
-/* === Блокировка частично открытых секций === */
+/* === Полное открытие секции при скролле (с плавной доводкой) === */
 function initSectionScrollControl() {
     let isScrolling = false;
+    let isUserHolding = false; // Флаг, если пользователь удерживает палец на экране
     let touchStartY = 0;
     let touchEndY = 0;
     const sections = document.querySelectorAll('.section');
 
     document.addEventListener("touchstart", (e) => {
         if (isCarouselActive) return;
+        isUserHolding = true; // Пользователь удерживает палец
         touchStartY = e.touches[0].clientY;
     });
 
     document.addEventListener("touchend", (e) => {
         if (isCarouselActive) return;
+        isUserHolding = false; // Пользователь отпустил палец
         touchEndY = e.changedTouches[0].clientY;
         handleSectionSwipe();
     });
 
+    document.addEventListener("touchmove", (e) => {
+        isUserHolding = true; // Пока пользователь водит пальцем, не доводим секцию
+    });
+
     window.addEventListener("scroll", () => {
-        if (isScrolling) return;
+        if (isScrolling || isUserHolding) return;
         isScrolling = true;
 
         setTimeout(() => {
-            snapToNearestSection();
+            if (!isUserHolding) snapToNearestSection();
             isScrolling = false;
         }, 300);
     });
 
     function handleSectionSwipe() {
-        if (isScrolling) return;
+        if (isScrolling || isUserHolding) return;
         isScrolling = true;
 
         let currentIndex = findCurrentSection();

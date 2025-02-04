@@ -14,9 +14,9 @@
             <img src="logo.png" alt="Barbershop Logo">
         </a>
 
-        <nav class="nav-buttons">
-            <a href="#services">Послуги</a>
+        <nav class="nav-buttons">            
             <a href="#about">Про нас</a>
+            <a href="#services">Послуги</a>
             <a href="#gallery">Галерея</a>
             <a href="#contacts">Контакти</a>
         </nav>
@@ -46,55 +46,63 @@
 
 
 
-        <!-- Секция услуг -->
-        <section id="services" class="section">       
+        <!-- Секция "О нас" с фоновым видео -->
+    <section id="about" class="section about-section">
+        <div class="video-wrapper">
+            <video autoplay muted loop playsinline class="bg-video">
+                <source src="service.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+        </div>
+        <div class="about-content">
+            <!--<h1 class="section-title">Про нас</h1>-->
+            <p class="about-text">
+                Барбершоп — це не просто місце, де підстригають волосся. Це стиль життя, традиції і культура чоловічого догляду.
+            </p>
+        </div>
+    </section>
 
-            <!-- Фоновое видео -->
-            <div class="video-wrapper">
-                <video autoplay muted loop playsinline class="bg-video">
-                    <source src="service.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                </video>
-            </div>
+    <!-- Секция "Услуги" с фоновым изображением -->
+    <section id="services" class="section services-section">
+        <div class="image-bg"></div> <!-- Фоновое изображение -->
 
-            
-            <h1 class="section-title">#Послуги</h1>        
-            <div class="carousel-container">
-                <div class="carousel">
-                    <div class="carousel-item">
-                        <img src="service1.png" alt="Чоловіча стрижка">
-                        <p>Чоловіча стрижка</p>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="service2.png" alt="Дитяча стрижка">
-                        <p>Дитяча стрижка</p>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="service3.png" alt="Стрижка бороди">
-                        <p>Стрижка бороди</p>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="service4.png" alt="Гоління">
-                        <p>Гоління</p>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="service5.png" alt="Фарбування">
-                        <p>Фарбування</p>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="service6.png" alt="Комплекс стрижка + борода">
-                        <p>Комплекс: стрижка + борода</p>
-                    </div>
+        <h1 class="section-title">Наші Послуги</h1>
+
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="service1.png" alt="Чоловіча стрижка">
+                    <p>Чоловіча стрижка</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="service2.png" alt="Дитяча стрижка">
+                    <p>Дитяча стрижка</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="service3.png" alt="Стрижка бороди">
+                    <p>Стрижка бороди</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="service4.png" alt="Гоління">
+                    <p>Гоління</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="service5.png" alt="Фарбування">
+                    <p>Фарбування</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="service6.png" alt="Комплекс стрижка + борода">
+                    <p>Комплекс: стрижка + борода</p>
                 </div>
             </div>
-        
-            <!-- Стрелки -->
-            <div class="carousel-arrows">
-                <div class="arrow left-arrow">←</div>
-                <div class="arrow right-arrow">→</div>
-            </div>
-        </section>
-        
+        </div>
+
+        <!-- Стрелки -->
+        <div class="carousel-arrows">
+            <div class="arrow left-arrow">←</div>
+            <div class="arrow right-arrow">→</div>
+        </div>
+    </section>
 
 
 
@@ -114,10 +122,12 @@
 
 
 
-        <!-- Секция "О нас" -->
-        <section id="about" class="section warm-bg about-bg">
-            <h1>Про нас</h1>
-        </section>
+
+
+
+
+
+
 
         <!-- Галерея -->
         <section id="gallery" class="section warm-bg gallery-bg">
