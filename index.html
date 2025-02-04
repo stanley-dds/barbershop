@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barbershop</title>
     <link rel="stylesheet" href="styles.css">
+    
+    <script>
+        // Проверка устройства: Только мобильные устройства (исключая iPad)
+        const isMobileDevice = /Mobi|Android|iPhone|iPod/i.test(navigator.userAgent);
+    
+        if (isMobileDevice) {
+            window.location.href = "mobile.html"; // Перенаправление на мобильную версию
+        }
+    </script>
+    
 </head>
 
 
