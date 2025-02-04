@@ -240,3 +240,37 @@ function initGallery() {
 }
 
 
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    initActiveNavHighlight();
+});
+
+/* === Подсветка активной кнопки в навигации === */
+function initActiveNavHighlight() {
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.nav-buttons a');
+
+    function highlightNav() {
+        let scrollPosition = window.scrollY;
+
+        sections.forEach(section => {
+            if (scrollPosition >= section.offsetTop - window.innerHeight / 3 &&
+                scrollPosition < section.offsetTop + section.offsetHeight - window.innerHeight / 3) {
+                
+                // Находим ссылку, у которой href соответствует id текущей секции
+                navLinks.forEach(link => {
+                    if (link.getAttribute("href") === `#${section.id}`) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+        });
+    }
+
+    window.addEventListener("scroll", highlightNav);
+    highlightNav();
+}

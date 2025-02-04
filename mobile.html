@@ -22,25 +22,34 @@
         </nav>
     </header>
 
-    <!-- Кнопка Instagram, закрепленная внизу -->
-    <a href="https://www.instagram.com" target="_blank" class="instagram-fixed">
-        <img src="inst.png" alt="Instagram" class="instagram-icon">
-    </a>
+
+
+
+        <!-- Кнопки Instagram и телефона, закрепленные внизу -->
+    <div class="social-fixed">
+        <a href="tel:+380964556785" class="social-icon">
+            <img src="trubka.png" alt="Call">
+        </a>
+        <a href="https://www.instagram.com" target="_blank" class="social-icon">
+            <img src="inst.png" alt="Instagram">
+        </a>
+    </div>
+
 
     <main>
 
 
         
-        <!-- Главная секция -->
-        <section id="home" class="section">
-            <div class="home-container">
-                <div class="image-wrapper">
-                    <img src="style2.jpg" alt="Barbershop" class="moving-image">
-                </div>
-                <h1 class="barber-gena">BARBERGENA</h1>
-                <a href="#services" class="scroll-down">↓</a>
+    <!-- Главная секция -->
+    <section id="home" class="section">
+        <div class="home-container">
+            <div class="image-wrapper">
+                <img src="style2.jpg" alt="Barbershop" class="moving-image">
             </div>
-        </section>
+            <h1 class="barber-gena">BARBERGENA</h1>
+            <a href="#services" class="scroll-down">↓</a>
+        </div>
+    </section>
         
 
 
@@ -66,7 +75,7 @@
     <section id="services" class="section services-section">
         <div class="image-bg"></div> <!-- Фоновое изображение -->
 
-        <h1 class="section-title">Наші Послуги</h1>
+        <!--<h1 class="section-title">Наші Послуги</h1> -->
 
         <div class="carousel-container">
             <div class="carousel">
@@ -110,31 +119,41 @@
 
 
         <!-- Галерея -->
-<section id="gallery" class="section gallery-section">
-    <div class="gallery-container">
-        <img id="gallery-image" src="style1.jpg" alt="Галерея" class="gallery-img">
-    </div>
-    
-    <!-- Элегантный указательный палец -->
-    <div id="pointer" class="pointer">
-        <img src="pointer.svg" alt="Tap Here">
-    </div>
-</section>
+    <section id="gallery" class="section gallery-section">
+        <div class="gallery-container">
+
+            
+            <img id="gallery-image" src="style1.jpg" alt="Галерея" class="gallery-img">
+        </div>
+        
+        <!-- Элегантный указательный палец -->
+        <div id="pointer" class="pointer">
+            <img src="pointer.svg" alt="Tap Here">
+        </div>
+    </section>
 
 
 
 
 
 
+            <!-- Секция "Контакты" -->
+    <section id="contacts" class="section contacts-section">
+        <div class="contacts-bg"></div> <!-- Фоновое изображение -->
 
+        
 
+        <!-- Креативные иконки перехода на карты -->
+        <div class="map-links">
+            <a href="https://www.google.com/maps/search/?api=1&query=49.069898,33.409529" target="_blank" class="map-icon">
+                Google Maps
+            </a>
+            <a href="https://maps.apple.com/?q=49.069898,33.409529" target="_blank" class="map-icon">
+                Apple Maps
+            </a>
+        </div>
+    </section>
 
-
-
-        <!-- Контакты -->
-        <section id="contacts" class="section warm-bg contacts-bg">
-            <h1>Контакти</h1>
-        </section>
     </main>
 
     <script src="mobile.js"></script>
