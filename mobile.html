@@ -10,12 +10,10 @@
 <body>
 
     <header class="sticky-header">
-        <!-- Логотип слева -->
         <a href="#home" class="logo">
             <img src="logo.png" alt="Barbershop Logo">
         </a>
-        
-        <!-- Кнопки справа -->
+
         <nav class="nav-buttons">
             <a href="#services">Послуги</a>
             <a href="#about">Про нас</a>
@@ -23,27 +21,112 @@
             <a href="#contacts">Контакти</a>
         </nav>
     </header>
-    
+
     <!-- Кнопка Instagram, закрепленная внизу -->
     <a href="https://www.instagram.com" target="_blank" class="instagram-fixed">
         <img src="inst.png" alt="Instagram" class="instagram-icon">
     </a>
 
     <main>
+
+
+        
+        <!-- Главная секция -->
         <section id="home" class="section">
-            <h1>Welcome to The Barbershop</h1>
+            <div class="home-container">
+                <div class="image-wrapper">
+                    <img src="style2.jpg" alt="Barbershop" class="moving-image">
+                </div>
+                <h1 class="barber-gena">BARBERGENA</h1>
+                <a href="#services" class="scroll-down">↓</a>
+            </div>
         </section>
-        <section id="services" class="section">
-            <h1>Services</h1>
+        
+
+
+
+
+        <!-- Секция услуг -->
+        <section id="services" class="section">       
+
+            <!-- Фоновое видео -->
+            <div class="video-wrapper">
+                <video autoplay muted loop playsinline class="bg-video">
+                    <source src="service.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+            </div>
+
+            
+            <h1 class="section-title">#Послуги</h1>        
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-item">
+                        <img src="service1.png" alt="Чоловіча стрижка">
+                        <p>Чоловіча стрижка</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="service2.png" alt="Дитяча стрижка">
+                        <p>Дитяча стрижка</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="service3.png" alt="Стрижка бороди">
+                        <p>Стрижка бороди</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="service4.png" alt="Гоління">
+                        <p>Гоління</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="service5.png" alt="Фарбування">
+                        <p>Фарбування</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="service6.png" alt="Комплекс стрижка + борода">
+                        <p>Комплекс: стрижка + борода</p>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Стрелки -->
+            <div class="carousel-arrows">
+                <div class="arrow left-arrow">←</div>
+                <div class="arrow right-arrow">→</div>
+            </div>
         </section>
-        <section id="about" class="section">
-            <h1>About Us</h1>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Секция "О нас" -->
+        <section id="about" class="section warm-bg about-bg">
+            <h1>Про нас</h1>
         </section>
-        <section id="gallery" class="section">
-            <h1>Gallery</h1>
+
+        <!-- Галерея -->
+        <section id="gallery" class="section warm-bg gallery-bg">
+            <h1>Галерея</h1>
         </section>
-        <section id="contacts" class="section">
-            <h1>Contact Us</h1>
+
+        <!-- Контакты -->
+        <section id="contacts" class="section warm-bg contacts-bg">
+            <h1>Контакти</h1>
         </section>
     </main>
 
